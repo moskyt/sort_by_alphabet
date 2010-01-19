@@ -1,0 +1,1 @@
+bc. %w{ahoj čau nazdar}.sort_by_alphabet(CzechAlphabet)
