@@ -1,1 +1,34 @@
-bc. %w{ahoj čau nazdar}.sort_by_alphabet(CzechAlphabet)
+This library implements alphabetical sorting according to given alphabet scheme. Currently, only Czech alphabet is included, but it is super-easy to create a new one.
+
+h1. Setup
+
+Install the gem:
+
+bc. gem install sort-by-alphabet
+
+Or require it into Rails:
+
+bc. gem require "sort-by-alphabet"
+
+h1. Requirements
+
+Support of +mb_chars+, i.e. _ActiveSupport_ in practice.
+
+h1. Usage
+
+Classical sort puts accented chars after normal:
+
+bc. %w{nazdar ahoj čau}.sort # => %w{ahoj nazdar čau}
+
++sort_by_alphabet+ does a better job:
+
+bc. %w{nazdar ahoj čau}.sort_by_alphabet(CzechAlphabet) # => %w{ahoj čau nazdar}
+
++isort_by_alphabet+ is case insensitive:
+
+bc. %w{nazdar Ahoj čau}.sort_by_alphabet(CzechAlphabet) # => %w{Ahoj čau nazdar}
+
++sort_by_alphabet+ can take a block which acts similarly as that in +sort_by+:
+
+bc. Something.all.sort_by_alphabet(CzechAlphabet) {|o| o.title}
+
