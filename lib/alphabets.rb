@@ -1,10 +1,10 @@
 class Alphabet
   
   def self.compare_letters_sensitive(x, y)
-    i1 = lower_case.index(x)
-    i2 = upper_case.index(x)
-    j1 = lower_case.index(y)
-    j2 = upper_case.index(y)
+    i1 = lower_case.mb_chars.index(x)
+    i2 = upper_case.mb_chars.index(x)
+    j1 = lower_case.mb_chars.index(y)
+    j2 = upper_case.mb_chars.index(y)
     if !i1 && !i2 or !j1 && !j2
       x <=> y
     elsif i1 && j2
@@ -21,8 +21,8 @@ class Alphabet
   end
 
   def self.compare_letters_insensitive(x, y)
-    i = lower_case.index(letter_to_lowercase(x))
-    j = lower_case.index(letter_to_lowercase(y))
+    i = lower_case.mb_chars.index(letter_to_lowercase(x))
+    j = lower_case.mb_chars.index(letter_to_lowercase(y))
     if !i || !j
       x <=> y
     else
@@ -31,9 +31,9 @@ class Alphabet
   end
   
   def self.letter_to_lowercase(a)
-    i = upper_case.index(a)
+    i = upper_case.mb_chars.index(a)
     if i
-      lower_case[i] 
+      lower_case.mb_chars[i] 
     else
       a
     end

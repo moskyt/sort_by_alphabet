@@ -1,7 +1,7 @@
 require 'rubygems' unless defined?(Gem)
 s = Gem::Specification.new do |s|
   s.name = "sort-by-alphabet"
-  s.version = "0.1.0"
+  s.version = "0.1.6"
   s.summary = "Library for lexical sorting in various languages."
   s.author = "Frantisek Havluj"
   s.email = "moskyt@rozhled.cz"
