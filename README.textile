@@ -24,11 +24,18 @@ bc. %w{nazdar ahoj čau}.sort # => %w{ahoj nazdar čau}
 
 bc. %w{nazdar ahoj čau}.sort_by_alphabet(CzechAlphabet) # => %w{ahoj čau nazdar}
 
-@isort_by_alphabet@ is case insensitive:
-
-bc. %w{nazdar Ahoj čau}.sort_by_alphabet(CzechAlphabet) # => %w{Ahoj čau nazdar}
-
 @sort_by_alphabet@ can take a block which acts similarly as that in @sort_by@:
 
 bc. Something.all.sort_by_alphabet(CzechAlphabet) {|o| o.title}
 
+You can also make a class alphabetically comparable:
+
+bc. class Something
+  comparable_by_alphabet(CzechAlphabet)
+end
+
+or use a block, e.g. for case insensitivity:
+
+bc. class SomethingElse
+  comparable_by_alphabet(CzechAlphabet) {|obj| obj.mb_chars.downcase}
+end
