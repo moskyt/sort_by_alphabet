@@ -6,7 +6,7 @@ class Alphabet
     if i && j
       i <=> j
     else
-      x <=> y
+      x.mb_chars.normalize(:d) <=> y.mb_chars.normalize(:d)
     end
   end
   

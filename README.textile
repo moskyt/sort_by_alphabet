@@ -28,13 +28,23 @@ bc. %w{nazdar ahoj čau}.sort_by_alphabet(CzechAlphabet) # => %w{ahoj čau nazda
 
 bc. Something.all.sort_by_alphabet(CzechAlphabet) {|o| o.title}
 
-You can also make a class alphabetically comparable:
+You can also make a class alphabetically comparable, enabling sorting:
 
-bc. class Something
+bc.. class Something
   comparable_by_alphabet(CzechAlphabet)
 end
 
-or use a block, e.g. for case insensitivity:
+a = Something.new
+b = Something.new
+c = Something.new
+
+# the following comparisons will be using to_s and lexical order given by Czech alphabet
+
+a <=> b
+
+[a, b, c].sort 
+
+p. or use a block, e.g. for case insensitivity:
 
 bc. class SomethingElse
   comparable_by_alphabet(CzechAlphabet) {|obj| obj.mb_chars.downcase}

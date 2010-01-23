@@ -50,6 +50,17 @@ class TestSorting < Test::Unit::TestCase
     assert_equal +1, CzechAlphabet.compare_letters('D', 'A')
   end
   
+  def test_fallbacks
+    assert_equal -1, EnglishAlphabet.compare_letters('a', 'č')
+    assert_equal -1, EnglishAlphabet.compare_letters('a', 'á')
+    assert_equal -1, EnglishAlphabet.compare_letters('c', 'č')
+    assert_equal -1, EnglishAlphabet.compare_letters('č', 'd')
+
+    assert_equal +1, "šumák".compare_by_alphabet("stoupa", EnglishAlphabet)
+    assert_equal +1, "Ábele".compare_by_alphabet("Ábel", EnglishAlphabet)
+    assert_equal +1, "dědek".compare_by_alphabet("činže", EnglishAlphabet)
+  end
+  
   def test_string_comparison
     assert_equal -1, CzechAlphabet.compare_letters('h', 'ň')
     assert_equal -1, "haf".compare_by_alphabet("ňaf", CzechAlphabet)
