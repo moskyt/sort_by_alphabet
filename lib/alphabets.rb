@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Alphabet
   
   def self.compare_letters(x, y)
